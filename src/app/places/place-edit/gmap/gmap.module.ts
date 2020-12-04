@@ -16,7 +16,7 @@ import { AgmCoreModule } from '@agm/core';
     IonicModule,
     GmapPageRoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAONNbfi18LZotg1twfxmN4WvVEBk6Mksw'
+      apiKey: ''
     })
   ],
   declarations: [GmapPage]

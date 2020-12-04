@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Ionic Segments
+    </ion-title>
+  </ion-toolbar>
+
+  <ion-toolbar color="primary">
+
+    <ion-segment 
+    value="all" 
+    color="tertiary" 
+    scrollable="true"
+    mode="ios"
+    [(ngModel)]="selectedPlaceId" 
+    (ionChange)="segmentChanged($event)">
+
+      <ion-segment-button *ngFor="let place of loadedPlaces"  value="{{place.id}}" >
+        <ion-label>{{place.title}}</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Segment Content</ion-card-subtitle>
+        <ion-card-title>{{selectedPlace.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-img [src]="selectedPlace.imageUrl"></ion-img>
+      <ion-card-content>
+        {{selectedPlace.description}}
+      </ion-card-content>
+    </ion-card>
+</ion-content>

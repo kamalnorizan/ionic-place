@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Place</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{place.title}}</ion-card-title>
+          </ion-card-header>
+          <ion-img [src]="place.imageUrl"></ion-img>
+          <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label position="floating">Title</ion-label>
+                  <ion-input [(ngModel)]="place.title" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Description</ion-label>
+                  <ion-input [(ngModel)]="place.description" type="text"></ion-input>
+                </ion-item>
+                <ion-item>
+                  <ion-label position="floating">Category</ion-label>
+                  <ion-input [(ngModel)]="place.category" type="text"></ion-input>
+                </ion-item>
+              </ion-list>
+              <ion-button [routerLink]="['/','places','placeedit', place.id, 'gmap']" expand="block" color="primary">
+                Location
+              </ion-button>
+              <ion-button  (click)="update()" expand="block" color="warning">
+                Update Place
+              </ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

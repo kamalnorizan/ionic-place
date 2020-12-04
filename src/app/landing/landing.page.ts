@@ -20,9 +20,11 @@ export class LandingPage implements OnInit {
   }
 
   ngOnInit() {
+    console.log('ngOnInit');
   }
 
   ionViewWillEnter() {
+    console.log('ionViewWillEnter');
     this.httpRequest.getToken().then(
       () => {
         if (this.httpRequest.isLoggedIn) {
@@ -43,6 +45,18 @@ export class LandingPage implements OnInit {
       component: RegisterPage
     });
     return await registerModal.present();
+  }
+
+  ionViewDidEnter(){
+    console.log('ionViewDidEnter');
+  }
+
+  ionViewWillLeave(){
+    console.log('ionViewWillLeave');
+  }
+
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave');
   }
 
 }

@@ -1,4 +1,4 @@
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, MenuController } from '@ionic/angular';
 import { HttpRequestServiceService } from './../../services/http-request-service.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -15,8 +15,11 @@ export class PlaceDetailPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private httpRequest: HttpRequestServiceService,
-    private loadingController: LoadingController
-  ) { }
+    private loadingController: LoadingController,
+    private menu: MenuController
+  ) { 
+    this.menu.enable(true);
+  }
 
   placeId = null;
   place: Place = {

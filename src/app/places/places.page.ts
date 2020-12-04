@@ -98,4 +98,16 @@ export class PlacesPage implements OnInit {
     toast.present();
   }
 
+  ionViewDidEnter(){
+    console.log('ionViewDidEnter');
+  }
+
+  ionViewWillLeave(){
+    console.log('ionViewWillLeave');
+  }
+
+  ionViewDidLeave(){
+    console.log('ionViewDidLeave');
+  }
+
 }

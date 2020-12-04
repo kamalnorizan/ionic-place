@@ -16,13 +16,12 @@ export class AppComponent {
       title: 'Places',
       url: '/places',
       icon: 'list'
-    }
-    // ,
-    // {
-    //   title: 'Segmented Place',
-    //   url: '/places/segment',
-    //   icon: 'barcode'
-    // },
+    },
+    {
+      title: 'Segmented Place',
+      url: '/places/segment',
+      icon: 'barcode'
+    },
   ];
 
   constructor(

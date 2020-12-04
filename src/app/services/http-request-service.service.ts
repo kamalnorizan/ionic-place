@@ -41,16 +41,20 @@ export class HttpRequestServiceService {
     );
   }
 
-  updatePlace( id: string, title: string, description: string, category: string) {
+  updatePlace( id: string, title: string, description: string, category: string, latitude: Number, longitude: Number) {
     return this.http.post(this.API_URL + 'places/update/' + id ,
-      { id, title, description, category }
+      { id, title, description, category, latitude, longitude }
     );
   }
 
-  deletePlace( id: string) {
-    return this.http.post(this.API_URL + 'places/delete' ,
-      { id }
-    );
+  deletePlace(id: string) {
+    const headers = new HttpHeaders({
+      'Authorization': this.token['token_type'] + ' ' + this.token['access_token']
+    });
+
+    // return this.http.post(this.API_URL)
+
+    return this.http.post(this.API_URL + 'places/delete', { id }, {headers} );
   }
 
   login(email: string, password: string) {

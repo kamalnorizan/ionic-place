@@ -3,6 +3,7 @@ import { LoadingController, NavController, ToastController } from '@ionic/angula
 import { Place } from './../place.model';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-place-edit',
@@ -27,7 +28,8 @@ export class PlaceEditPage implements OnInit {
     private httpRequest: HttpRequestServiceService,
     private loadingController: LoadingController,
     private navCtrl: NavController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private geolocation: Geolocation
   ) { }
 
   ngOnInit() {
@@ -50,6 +52,10 @@ export class PlaceEditPage implements OnInit {
     this.httpRequest.getPlace(placeId).subscribe(
       place => {
         this.place = place;
+        this.geolocation.getCurrentPosition().then(res => {
+          this.place.latitude = res.coords.latitude;
+          this.place.logitude = res.coords.longitude;
+        });
       }, error => {
         console.log(error);
       }
@@ -67,7 +73,7 @@ export class PlaceEditPage implements OnInit {
     if (this.place.title === '' || this.place.description === '' || this.place.category === '') {
       this.presentToast();
     } else {
-      this.httpRequest.updatePlace(this.place.id, this.place.title, this.place.description, this.place.category)
+      this.httpRequest.updatePlace(this.place.id, this.place.title, this.place.description, this.place.category, this.place.latitude, this.place.logitude)
       .subscribe(
         data => {
           this.navCtrl.navigateRoot('/places');
